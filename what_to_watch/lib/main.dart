@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-       home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -34,7 +34,8 @@ User newUser() {
 }
 
 Movie newMovie() {
-  return new Movie(id: 2, name: "Avengers", image: 'assets/images/Avengers.jpg');
+  return new Movie(
+      id: 2, name: "Avengers", image: 'assets/images/Avengers.jpg');
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -48,16 +49,48 @@ class _MyHomePageState extends State<MyHomePage> {
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
-      body: Center(
+      body:
+          // Center(
+          // child:
+          Container(
+            margin: EdgeInsets.only(top: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Post(_currUser, _currMovie),
-            Post(newUser(), newMovie()),
+            Post(_currUser, _currMovie,'1 min ago'),
+            Divider(),
+            Post(newUser(), newMovie(),'10 hours ago'),
           ],
+          // ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
+
+      bottomNavigationBar: BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.people),
+          title: Text(''),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.movie),
+          title: Text(''),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.list),
+          title: Text(''),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          title: Text(''),
+        ),
+      ],
+      // currentIndex: 0,
+      unselectedItemColor: Colors.grey,
+      selectedItemColor: Colors.amber[800],
+      onTap: null,
+    ),
+            // floatingActionButton:
+      //  FloatingActionButton(
       //   onPressed: null,
       //   tooltip: 'Increment',
       //   child: Icon(Icons.add),
